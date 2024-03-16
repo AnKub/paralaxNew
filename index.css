@@ -1,0 +1,65 @@
+body{
+margin: 0;
+padding: 0;
+font: 20px/1.6 Arial, sans-serif;
+background: #060d17;
+color: azure;
+}
+.mountains{
+position: relative;
+overflow: hidden;
+width: 100%;
+padding-bottom: 92%;
+background-color: #063813;
+}
+
+.mountains-slide{
+position: absolute;
+top: 0;
+width: 300vw;
+height: 100%;
+left: -100vw;
+background-repeat: repeat-x;
+background-position: center bottom;
+background-size: 100vw auto;
+}
+
+.mountains-slide-1{
+background-image: url();
+}
+.mountains-slide-2{
+background-image: url();
+}
+.mountains-slide-3{
+background-image: url();
+}
+.mountains-slide-4{
+background-image: url();
+}
+.mountains-slide-5{
+background-image: url();
+}
+.mountains-slide-6{
+background-image: url();
+}
+.container{
+max-width: 900px;
+padding: 2rem 2rem 3rem;
+margin: 0 auto;
+}
+
+hgroup{
+margin-bottom: 3rem;
+text-align: center;
+}
+ hgroup h1 {
+font-size: 2.5rem;
+margin: 0;
+}
+hgroup h2{
+margin: 0;
+font-size: 1.2rem ;
+text-transform: uppercase;
+font-weight: normal;
+letter-spacing: 0.1em ;
+}
