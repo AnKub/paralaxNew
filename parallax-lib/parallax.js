@@ -5,13 +5,19 @@ this.parallaxLayers = Array.from(elements).map((element)=> (
   ));
 }
 destroy(){
-
+this.parallaxLayers.forEach((layer) => layer.destroyEvents());
 }
 }
 Parallax.Layer = class {
 constructor(element, options = {}) {
           this.containerNode = element;
           this.childrenNodes = element.children;
+
+          this.x = 0;
+          this.y = 0;
+          this.mouseX = 0;
+          this.mouseY = 0;
+
 
           this.depths =Array.from(this.childrenNodes).map((child) =>(
             child.dataset.depth ? Number( child.dataset.depth):0
@@ -61,15 +67,21 @@ constructor(element, options = {}) {
             this.mouseY = (clientY - this.heightCenter) / this.heightCenter;
             }
             }
+
+
       animationFrame(){
+             const scrollChange = window.scrollY - this.offsetTop;
              const positionX = this.mouseX * this.width / 10;
-             const positionY = this.mouseY * this.height / 10;
+             const positionY = this.mouseY * this.height / 10 + Math.max(scrollChange / 3, 0);
+
+             this.x += (positionX - this.x) * 0.1;
+             this.y += (positionY - this.y) * 0.1;
 
              for(let i = 0; i <this.childrenNodes.length; i++) {
                const layerNode = this.childrenNodes[i];
                const layerDepth = this.depths[i] || 0;
-               const finalX = positionX * layerDepth * -1;
-               const finalY = positionY * layerDepth * -1;
+               const finalX = this.x * layerDepth * -1;
+               const finalY = this.y * layerDepth * -1;
 
                this.setPosition(layerNode, finalX, finalY);
             }
